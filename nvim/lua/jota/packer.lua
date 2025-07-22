@@ -119,6 +119,17 @@ return require("packer").startup(function(use)
     }
 
     -- Colorschemes
+    use {
+        -- gruvbox
+        "ellisonleao/gruvbox.nvim",
+        config = function()
+            require("gruvbox").setup({
+            overrides = {
+                ["@string"] = { fg = "#5fb950" }
+            }
+        })
+        end
+    }
     use "folke/tokyonight.nvim"
     use "shaunsingh/nord.nvim"
     use "olimorris/onedarkpro.nvim"

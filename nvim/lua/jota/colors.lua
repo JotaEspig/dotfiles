@@ -1,5 +1,5 @@
 local vim = vim
-local colorscheme_file = vim.fn.stdpath("state") .. "/.colorscheme"
+colorscheme_file = vim.fn.stdpath("state") .. "/.colorscheme"
 
 local function OverrideBG()
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -10,7 +10,7 @@ local function OverrideBG()
     vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#11131a" })
 end
 
-local function ApplyColors(colorscheme, transparent)
+function ApplyColors(colorscheme, transparent)
     colorscheme = colorscheme or "tokyonight-moon"
     vim.cmd.colorscheme(colorscheme)
     if transparent then
@@ -18,7 +18,7 @@ local function ApplyColors(colorscheme, transparent)
     end
 end
 
-local function SaveColors(colorscheme, transparent)
+function SaveColors(colorscheme, transparent)
     local line = colorscheme
     if transparent then
         line = line .. " --transparent"
@@ -56,31 +56,3 @@ end, {
         end
     end
 })
-
--- Apply saved theme on startup
-if vim.fn.filereadable(colorscheme_file) == 1 then
-    local data = vim.fn.readfile(colorscheme_file)
-    if #data > 0 then
-        local args = vim.split(data[1], "%s+")
-        local colorscheme
-        local transparent = false
-        for _, arg in ipairs(args) do
-            if arg == "--transparent" then
-                transparent = true
-            else
-                colorscheme = arg
-            end
-        end
-        if colorscheme then
-            ApplyColors(colorscheme, transparent)
-        end
-    else
-        -- Set default if nothing saved
-        local default = "tokyonight-moon"
-        SaveColors(default, true)
-    end
-else
-    -- Set default if nothing saved
-    local default = "tokyonight-moon"
-    SaveColors(default, true)
-end
