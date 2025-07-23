@@ -2,19 +2,21 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 32, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 8, // Gaps between modules (4px)
-    "margin-top": 5,
+    "margin-top": 3,
+    "margin-left": 3,
+    "margin-right": 3,
     // Choose the order of the modules
     "modules-left": [
         "power-profiles-daemon",
         "battery",
         "network",
-        "hyprland/workspaces"
+        "hyprland/window"
     ],
     "modules-center": [
-        "hyprland/window"
+        "hyprland/workspaces"
     ],
     "modules-right": [
         "custom/media",
@@ -26,6 +28,11 @@
         "clock"
     ],
     // Modules configuration
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 80,
+        "empty-format": ""
+    },
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,

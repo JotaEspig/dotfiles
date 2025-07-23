@@ -1,14 +1,14 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "Hack Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font Propo", Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
     font-weight: bold;
     border-radius: 9px;
+    padding: 2px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.2);
-    /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
+    background-color: rgba(102, 92, 84, 0.33);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -29,20 +29,20 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
 }
 
 /* you can set a style on hover for any module like this */
 #clock:hover,
 #pulseaudio:hover {
-    background-color: #241530;
+    background-color: #282828;
 }
 
 #workspaces button {
     padding: 0 5px;
-    background-color: transparent;
+    margin: 0 2px;
+    background-color: rgba(80, 73, 69, 0.9);
     color: #ffffff;
-    border-radius: 9px;
+    border-radius: 50%;
 }
 
 #workspaces button:hover {
@@ -50,8 +50,7 @@ button:hover {
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: #282828;
 }
 
 #workspaces button.urgent {
@@ -91,7 +90,17 @@ button:hover {
     margin: 0 2px;
 }
 
-#window,
+#window {
+    background-color: rgba(80, 73, 69, 0.5);
+    padding: 0 10px;
+    margin: 0 10px;
+}
+window#waybar.empty #window {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
 #workspaces {
     margin: 0 25px;
 }
@@ -107,7 +116,7 @@ button:hover {
 }
 
 #clock {
-    background-color: #241530;
+    background-color: #282828;
     padding-right: 11px;
 }
 
@@ -118,7 +127,7 @@ button:hover {
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
-    background-color: #26A65B;
+    background-color: #689D6A;
 }
 
 @keyframes blink {
@@ -163,45 +172,45 @@ label:focus {
 }
 
 #cpu {
-    background-color: #3C385B;
+    background-color: #3c3836;
     color: #FFFFFF;
 }
 
 #memory {
-    background-color: #3C385B;
+    background-color: #3c3836;
 }
 
 #disk {
-    background-color: #3C385B;
+    background-color: #3c3836;
 }
 
 #backlight {
-    background-color: #3C385B;
+    background-color: #3c3836;
 }
 
 #network {
-    background-color: #1038FF;
+    background-color: #458588;
 }
 #network:hover {
-    background-color: #0410dd;
+    background-color: #406070;
 }
 
 #network.disconnected {
-    background-color: #3C385B;
+    background-color: #3c3836;
 }
 
 #pulseaudio {
-    background-color: #3C385B;
+    background-color: #3c3836;
     color: #FFFFFF;
 }
 
 #pulseaudio.muted {
-    background-color: #3C385B;
+    background-color: #3c3836;
     color: #777777;
 }
 
 #wireplumber {
-    background-color: #3C385B;
+    background-color: #3c3836;
     color: #000000;
 }
 
@@ -210,7 +219,7 @@ label:focus {
 }
 
 #custom-media {
-    background-color: #3C385B;
+    background-color: #3c3836;
     color: #ffffff;
     min-width: 100px;
 }
@@ -224,11 +233,11 @@ label:focus {
 }
 
 #temperature {
-    background-color: #3C385B;
+    background-color: #3c3836;
 }
 
 #temperature.critical {
-    background-color: #3C385B;
+    background-color: #3c3836;
 }
 
 #tray {
