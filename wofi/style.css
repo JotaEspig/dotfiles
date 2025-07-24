@@ -1,7 +1,7 @@
 window {
 margin: 0px;
 border: 1px solid #928374;
-background-color: #282828;
+background-color: rgba(40, 40, 40, 0.8);
 border-radius: 10px;
 }
 
@@ -15,13 +15,13 @@ background-color: #1d2021;
 #inner-box {
 margin: 5px;
 border: none;
-background-color: #282828;
+background-color: rgba(40, 40, 40, 0.3);
 }
 
 #outer-box {
 margin: 5px;
 border: none;
-background-color: #282828;
+background-color: rgba(40, 40, 40, 0.3);
 }
 
 #scroll {

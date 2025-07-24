@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 PF_COL1=3 PF_COL2=7 PF_COL3=2 pfetch
 
 setopt HIST_EXPIRE_DUPS_FIRST
