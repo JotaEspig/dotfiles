@@ -11,7 +11,9 @@ vim.keymap.set('n', '<C-.>', '<Cmd>BufferMoveNext<CR>', opts)
 -- Pin/unpin buffer
 vim.keymap.set('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 -- Close buffer
-vim.keymap.set('n', '<A-x>', '<Cmd>BufferClose<CR>', opts)
+vim.keymap.set('n', '<A-x>', '<Cmd>BufferDelete<CR>', opts)
+-- Force close buffer (ignores unsaved changes)
+vim.keymap.set('n', '<A-X>', '<Cmd>bdelete!<CR>', opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
