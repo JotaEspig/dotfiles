@@ -22,5 +22,9 @@ alias lh="ls -lh --color"
 alias discord='XDG_SESSION_TYPE=x11 /usr/bin/discord'
 
 export FONTCONFIG_FILE=$HOME/.config/fontconfig/fonts.conf
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 eval "$(starship init zsh)"
