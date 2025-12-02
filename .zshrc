@@ -36,5 +36,3 @@ eval "$(starship init zsh)"
 # Zsh configurations
 typeset -g ZLE_REMOVE_SUFFIX_CHARS=
 zstyle ':completion:*' add-space true
-
-[ -f "/home/jotaespig/.ghcup/env" ] && . "/home/jotaespig/.ghcup/env" # ghcup-env
