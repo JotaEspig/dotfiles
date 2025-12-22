@@ -125,6 +125,8 @@ return require("packer").startup(function(use)
         config = function()
             require("gruvbox").setup({
             overrides = {
+                Normal = { bg = "#1d2021" },
+                NormalFloat = { bg = "#1d2021" },
                 ["@string"] = { fg = "#5fb950" }
             }
         })
