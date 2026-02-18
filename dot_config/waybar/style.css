@@ -1,0 +1,259 @@
+/* GNOME Shell-inspired Waybar theme */
+/* Mimics the GNOME top bar: dark translucent background, rounded indicators, clean typography */
+
+* {
+    font-family: "Cantarell", "Inter", "Noto Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+}
+
+window#waybar {
+    background-color: rgba(18, 18, 18, 0.92);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+.modules-center {
+    background: transparent;
+}
+
+/* ── Left: workspaces + window title ── */
+
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 1px 7px;
+    margin: 4px 1px;
+    color: rgba(255, 255, 255, 0.55);
+    background: transparent;
+    border-radius: 99px;
+    border: none;
+    transition: all 0.2s ease;
+    min-width: 18px;
+    font-size: 12px;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+#workspaces button.urgent {
+    background: rgba(220, 80, 80, 0.85);
+    color: #ffffff;
+}
+
+#window {
+    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.75);
+    background: transparent;
+    font-weight: 400;
+}
+
+/* ── Center: clock ── */
+
+#clock {
+    padding: 0 14px;
+    color: #ffffff;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+}
+
+#clock * {
+    color: #ffffff;
+}
+
+#clock:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Right: system indicators ── */
+/* All right-side modules share a common pill style */
+
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-bluetooth,
+#power-profiles-daemon,
+#custom-power,
+#custom-debug-toggle,
+#tray {
+    padding: 2px 10px;
+    margin: 4px 1px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    transition: background 0.2s ease;
+}
+
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
+#custom-bluetooth:hover,
+#power-profiles-daemon:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Bluetooth ── */
+#custom-bluetooth {
+    color: #ffffff;
+}
+
+#custom-bluetooth.off,
+#custom-bluetooth.disabled {
+    color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+#custom-bluetooth.on {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#custom-bluetooth.connected {
+    color: #89b4fa;
+    background: rgba(137, 180, 250, 0.12);
+}
+
+#custom-bluetooth.connected:hover {
+    background: rgba(137, 180, 250, 0.22);
+}
+
+/* ── Network ── */
+#network {
+    color: #ffffff;
+}
+#network.disconnected {
+    color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Audio ── */
+#pulseaudio.muted {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Battery ── */
+#battery {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #8de5a1;
+}
+
+#battery.good {
+    color: #ffffff;
+}
+
+#battery.warning:not(.charging) {
+    color: #f0c060;
+}
+
+@keyframes blink-critical {
+    to {
+        background: rgba(220, 60, 60, 0.6);
+        color: #ffffff;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #ff6b6b;
+    animation-name: blink-critical;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* ── Power profile ── */
+#power-profiles-daemon {
+    padding: 2px 8px;
+}
+
+/* ── Power button ── */
+#custom-power,
+#custom-debug-toggle {
+    padding: 2px 10px;
+    margin: 4px 1px;
+    border-radius: 99px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+#custom-debug-toggle {
+    color: rgba(168, 216, 168, 0.8);
+    background: rgba(168, 216, 168, 0.07);
+}
+
+#custom-debug-toggle:hover {
+    color: #a8d8a8;
+    background: rgba(168, 216, 168, 0.18);
+}
+
+#custom-power {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 10px;
+    font-size: 14px;
+}
+
+#custom-power:hover {
+    color: #ff6b6b;
+    background: rgba(255, 80, 80, 0.15);
+}
+
+/* ── Tray ── */
+#tray {
+    padding: 2px 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: rgba(220, 80, 80, 0.5);
+}
+
+/* ── Privacy indicators ── */
+#privacy {
+    padding: 0 4px;
+}
+
+#privacy-item {
+    padding: 2px 6px;
+    border-radius: 99px;
+    margin: 4px 2px;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+#privacy-item.screenshare {
+    background: rgba(207, 87, 0, 0.75);
+}
+
+#privacy-item.audio-in {
+    background: rgba(28, 160, 0, 0.75);
+}
