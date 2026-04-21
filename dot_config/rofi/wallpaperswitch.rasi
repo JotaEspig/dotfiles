@@ -4,7 +4,11 @@ configuration {
     case-sensitive: false;
 }
 
-@theme "~/.config/rofi/theme.rasi"
+@theme "gruvbox-material"
+
+* {
+    foreground: @fg0;
+}
 
 window {
     width:            1200px;

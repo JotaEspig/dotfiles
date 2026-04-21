@@ -29,6 +29,9 @@ export FONTCONFIG_FILE=$HOME/.config/fontconfig/fonts.conf
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+# PATH
+export PATH="$HOME/hacking/utils/bin:$PATH"
+
 # Zsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
