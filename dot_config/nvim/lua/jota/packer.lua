@@ -144,6 +144,7 @@ return require("packer").startup(function(use)
         'daltonmenezes/aura-theme',
         rtp = 'packages/neovim',
     }
+    use "ribru17/bamboo.nvim"
 
     -- Transparent background (it's causing some error)
     -- use "xiyaowong/transparent.nvim"

@@ -4,11 +4,7 @@ configuration {
     case-sensitive: false;
 }
 
-@theme "gruvbox-material"
-
-* {
-    foreground: @fg0;
-}
+@theme "rounded-blue-dark"
 
 window {
     width:            1200px;
@@ -16,7 +12,6 @@ window {
     border-radius:    15px;
     border:           2px;
     border-color:     @border;
-    background-color: @background;
     padding:          0px;
 }
 
@@ -34,9 +29,6 @@ inputbar {
     padding:          10px;
     border-radius:    10px;
     children:         [ "textbox-prompt-colon", "entry" ];
-    text-color:       @foreground;
-    border-color:     @foreground;
-    background-color: @background;
 }
 
 listview {

@@ -2,9 +2,6 @@
 autoload -Uz compinit
 compinit
 
-# Pfetch
-PF_COL1=3 PF_COL2=7 PF_COL3=2 pfetch
-
 # History settings
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -31,9 +28,12 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # PATH
 export PATH="$HOME/hacking/utils/bin:$PATH"
+export PATH="$HOME/dev/terminal-theme-switcher:$PATH"
 
 # Zsh plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+eval "$(terminal-theme-switch load)"
 eval "$(starship init zsh)"
 
 # Zsh configurations
