@@ -1,0 +1,9 @@
+[kali]
+starship_path = "~/.config/starship/themes/kali.toml"
+terminal_fg = "#ffffff"
+terminal_bg = "#000000"
+
+[retrohacker]
+starship_path = "~/.config/starship/themes/green_hacker.toml"
+terminal_fg = "#00ff00"
+terminal_bg = "#000000"
