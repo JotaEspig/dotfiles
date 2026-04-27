@@ -1,0 +1,120 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](fg:color_bg0)\
+$os\
+$username\
+[](bg:color_bg1 fg:color_bg0)\
+$directory\
+[](fg:color_bg1 bg:color_bg2)\
+$git_branch\
+$git_status\
+[](fg:color_bg2 bg:color_bg3)\
+$python\
+$nodejs\
+$java\
+[](fg:color_bg3 bg:color_bg0)\
+$time\
+[ ](fg:color_bg0)\
+$line_break$character"""
+
+palette = 'hacker_blue_green'
+
+# =========================
+# 🎨 PALETTE (HACKER STYLE)
+# =========================
+[palettes.hacker_blue_green]
+color_fg = '#D9FDF3'        # soft neon white
+color_bg0 = '#050A0A'       # deep black-green
+color_bg1 = '#0B1F1F'       # dark teal
+color_bg2 = '#0F2A2A'
+color_bg3 = '#133333'
+
+color_green = '#00FF9C'     # neon green (main hacker color)
+color_blue  = '#00BFFF'     # electric blue
+color_red   = '#FF3B3B'
+color_gray  = '#8AAFAF'
+
+# =========================
+# 🖥️ OS
+# =========================
+[os]
+disabled = false
+style = "bg:color_bg0 fg:color_green"
+
+[os.symbols]
+Arch = "󰣇"
+Ubuntu = ""
+Windows = "󰍲"
+
+# =========================
+# 👤 USER
+# =========================
+[username]
+show_always = true
+style_user = "bg:color_bg0 fg:color_fg"
+style_root = "bg:color_bg0 fg:color_red"
+format = '[ $user ]($style)'
+
+# =========================
+# 📁 DIRECTORY
+# =========================
+[directory]
+style = "fg:color_blue bg:color_bg1"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# =========================
+# 🌿 GIT
+# =========================
+[git_branch]
+symbol = ""
+style = "bg:color_bg2"
+format = '[[ $symbol $branch ](fg:color_green bg:color_bg2)]($style)'
+
+[git_status]
+style = "bg:color_bg2"
+format = '[[($all_status$ahead_behind )](fg:color_red bg:color_bg2)]($style)'
+
+# =========================
+# ⚙️ LANGUAGES
+# =========================
+[python]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $version) ](fg:color_green bg:color_bg3)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $version) ](fg:color_blue bg:color_bg3)]($style)'
+
+[java]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $version) ](fg:color_red bg:color_bg3)]($style)'
+
+# =========================
+# ⏱️ TIME
+# =========================
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_bg0"
+format = '[[  $time ](fg:color_gray bg:color_bg0)]($style)'
+
+# =========================
+# ↩️ PROMPT
+# =========================
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[➜](bold fg:color_green)'
+error_symbol = '[➜](bold fg:color_red)'
+vimcmd_symbol = '[](bold fg:color_blue)'
+vimcmd_replace_one_symbol = '[](bold fg:color_red)'
+vimcmd_replace_symbol = '[](bold fg:color_red)'
+vimcmd_visual_symbol = '[](bold fg:color_gray)'
