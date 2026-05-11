@@ -15,10 +15,7 @@ KEYTIMEOUT=1
 bindkey -v '^?' backward-delete-char
 
 # Aliases
-alias ls="ls --color --group-directories-first -X"
-alias la="ls -lah --color"
-alias lh="ls -lh --color"
-alias discord='XDG_SESSION_TYPE=x11 /usr/bin/discord'
+source ~/.zsh/aliases.zsh
 
 # Environment variables
 export EDITOR=nvim
