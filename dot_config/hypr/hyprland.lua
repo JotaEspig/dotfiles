@@ -65,16 +65,18 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 ---- LOOK AND FEEL ----
 -----------------------
 
+-- Visual "vidro fosco" (liquid glass leve): blur + borda com brilho + cantos suaves
 hl.config({
     general = {
-        gaps_in  = 4,
-        gaps_out = 5,
+        gaps_in  = 5,
+        gaps_out = 10,
 
         border_size = 1,
 
         col = {
-            active_border   = "rgb(5FAFFF)",
-            inactive_border = "rgb(1a1a1a)",
+            -- brilho de aresta: degradê claro na ativa, quase invisível na inativa
+            active_border   = { colors = { "rgba(ffffff66)", "rgba(5FAFFF55)", "rgba(ffffff22)" }, angle = 45 },
+            inactive_border = "rgba(ffffff14)",
         },
 
         resize_on_border = true,
@@ -84,30 +86,47 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 3,
-        rounding_power = 2,
+        rounding       = 12,
+        rounding_power = 4, -- cantos "squircle"
 
         active_opacity   = 1.0,
         inactive_opacity = 1.0,
 
+        dim_inactive = true,
+        dim_strength = 0.08,
+
         shadow = {
             enabled      = true,
-            range        = 4,
+            range        = 20,
             render_power = 3,
-            color        = 0xee000000,
+            color        = 0x55000000,
         },
 
         blur = {
-            enabled  = true,
-            size     = 15,
-            passes   = 1,
-            popups   = false,
-            vibrancy = 0.1696,
+            enabled           = true,
+            size              = 7,
+            passes            = 2,
+            new_optimizations = true,
+            xray              = false,
+            noise             = 0.015,
+            contrast          = 1.0,
+            brightness        = 1.05,
+            vibrancy          = 0.2,
+            vibrancy_darkness = 0.3,
+            popups            = true,
         },
     },
 
     animations = {
         enabled = true,
+    },
+
+    debug = {
+        vfr = true, -- só redesenha quando algo muda (economiza bateria)
+    },
+
+    cursor = {
+        inactive_timeout = 3,
     },
 })
 
@@ -117,30 +136,31 @@ hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1}
 hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}   } })
 hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}} })
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1} } })
+hl.curve("overshoot",      { type = "bezier", points = { {0.34, 1.35}, {0.64, 1} } })
 
 hl.animation({ leaf = "global",        enabled = true, speed = 10,   bezier = "default" })
-hl.animation({ leaf = "border",        enabled = true, speed = 5.39, bezier = "easeOutQuint" })
+hl.animation({ leaf = "border",        enabled = true, speed = 6,    bezier = "easeOutQuint" })
+hl.animation({ leaf = "borderangle",   enabled = true, speed = 30,   bezier = "linear", style = "once" })
 hl.animation({ leaf = "windows",       enabled = true, speed = 4.79, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windowsIn",     enabled = true, speed = 4.1,  bezier = "easeOutQuint", style = "popin 87%" })
-hl.animation({ leaf = "windowsOut",    enabled = true, speed = 1.49, bezier = "linear",       style = "popin 87%" })
+hl.animation({ leaf = "windowsIn",     enabled = true, speed = 4.5,  bezier = "overshoot",    style = "popin 80%" })
+hl.animation({ leaf = "windowsOut",    enabled = true, speed = 2.5,  bezier = "easeOutQuint", style = "popin 85%" })
 hl.animation({ leaf = "fadeIn",        enabled = true, speed = 1.73, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeOut",       enabled = true, speed = 1.46, bezier = "almostLinear" })
 hl.animation({ leaf = "fade",          enabled = true, speed = 3.03, bezier = "quick" })
+hl.animation({ leaf = "fadeDim",       enabled = true, speed = 4,    bezier = "quick" })
 hl.animation({ leaf = "layers",        enabled = true, speed = 3.81, bezier = "easeOutQuint" })
-hl.animation({ leaf = "layersIn",      enabled = true, speed = 4,    bezier = "easeOutQuint", style = "fade" })
-hl.animation({ leaf = "layersOut",     enabled = true, speed = 1.5,  bezier = "linear",       style = "fade" })
+hl.animation({ leaf = "layersIn",      enabled = true, speed = 4,    bezier = "overshoot",    style = "popin 90%" })
+hl.animation({ leaf = "layersOut",     enabled = true, speed = 2.5,  bezier = "easeOutQuint", style = "fade" })
 hl.animation({ leaf = "fadeLayersIn",  enabled = true, speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces",    enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn",  enabled = true, speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspaces",    enabled = true, speed = 3,    bezier = "easeOutQuint", style = "slidefade 20%" })
 
 -- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only" — descomente se quiser usar
--- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
--- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
--- hl.window_rule({ name = "no-gaps-wtv1", match = { float = false, workspace = "w[tv1]" }, border_size = 0, rounding = 0 })
--- hl.window_rule({ name = "no-gaps-f1",   match = { float = false, workspace = "f[1]" },   border_size = 0, rounding = 0 })
+hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
+hl.window_rule({ name = "no-gaps-wtv1", match = { float = false, workspace = "w[tv1]" }, border_size = 0, rounding = 0 })
+hl.window_rule({ name = "no-gaps-f1",   match = { float = false, workspace = "f[1]" },   border_size = 0, rounding = 0 })
 
 hl.config({
     dwindle = {
@@ -262,3 +282,19 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 
 -- Exemplo (desativado): https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- hl.window_rule({ name = "float-kitty", match = { class = "^(kitty)$", title = "^(kitty)$" }, float = true })
+
+-- Translucidez só em apps leves (vidro aparece sem pesar em navegador/vídeo)
+hl.window_rule({ name = "glass-kitty",   match = { class = "^(kitty)$" },              opacity = "0.92 0.85" })
+hl.window_rule({ name = "glass-files",   match = { class = "^(org.gnome.Nautilus)$" }, opacity = "0.94 0.88" })
+
+-- Diálogos comuns flutuam sozinhos
+hl.window_rule({ name = "float-pavucontrol", match = { class = "^(org.pulseaudio.pavucontrol)$" }, float = true })
+hl.window_rule({ name = "float-blueman",     match = { class = "^(.blueman-manager-wrapped)$" },   float = true })
+
+-- Camadas (barra, launcher, notificações) com o mesmo vidro
+for _, ns in ipairs({ "waybar", "rofi", "swaync-control-center", "swaync-notification-window" }) do
+    hl.layer_rule({ name = "glass-" .. ns, match = { namespace = ns }, blur = true, ignore_alpha = 0.3 })
+end
+
+-- Gesto de 3 dedos no touchpad troca de workspace
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
