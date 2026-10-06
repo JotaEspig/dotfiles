@@ -10,6 +10,7 @@
     "margin-right": 0,
 
     "modules-left": [
+        "custom/arch",
         "hyprland/workspaces",
         "hyprland/window"
     ],
@@ -26,6 +27,12 @@
         "battery",
         "custom/power"
     ],
+
+    "custom/arch": {
+        "format": "\uf303",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
 
     "hyprland/workspaces": {
         "disable-scroll": true,
