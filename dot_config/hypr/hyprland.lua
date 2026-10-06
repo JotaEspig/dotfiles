@@ -31,12 +31,13 @@ local wallpaperPath = "~/.config/hypr/wallpapers"
 hl.on("hyprland.start", function()
     -- hl.exec_cmd("nm-applet")
     hl.exec_cmd("waybar")
-    hl.exec_cmd("awww img " .. wallpaperPath .. "/$(head -n 1 " .. wallpaperPath .. "/current.set) fill")
+    -- o daemon precisa subir antes do "awww img", senão o wallpaper falha
+    hl.exec_cmd("awww-daemon")
+    hl.exec_cmd("sleep 1 && awww img " .. wallpaperPath .. "/$(head -n 1 " .. wallpaperPath .. "/current.set) --resize crop")
     hl.exec_cmd("swaync")
     hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 24")
     hl.exec_cmd("wlsunset -S 05:30 -s 21:00 -T 5000 -t 3500")
     hl.exec_cmd("blueman-applet")
-    hl.exec_cmd("awww-daemon")
 end)
 
 
@@ -183,12 +184,8 @@ hl.config({
     },
 })
 
--- Exemplo de config por dispositivo
--- https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/
-hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
-})
+-- Config por dispositivo: https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/
+-- hl.device({ name = "<nome do dispositivo>", sensitivity = -0.5 })
 
 
 ---------------------
@@ -201,7 +198,7 @@ hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("~/.config/hypr/kitty-smart-laun
 hl.bind(mainMod .. " + C",      hl.dsp.window.close())
 hl.bind(mainMod .. " + W",      hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + F",      hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + Q",      hl.dsp.exit())
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exit()) -- SHIFT evita sair da sessão sem querer
 hl.bind(mainMod .. " + E",      hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + space",  hl.dsp.exec_cmd("~/.config/hypr/windowfloat.sh"))
 hl.bind(mainMod .. " + D",      hl.dsp.exec_cmd(menu))
@@ -229,7 +226,7 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.swap({ direction = "right" 
 for i = 1, 10 do
     local key = i % 10 -- 10 maps to key 0
     hl.bind(mainMod .. " + " .. key,         hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
 -- Example special workspace (scratchpad)

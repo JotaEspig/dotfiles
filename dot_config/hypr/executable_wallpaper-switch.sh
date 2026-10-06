@@ -4,16 +4,16 @@ CWD=$(pwd)
 
 WALLPAPER_PATH=$HOME/.config/hypr/wallpapers
 
-cd $WALLPAPER_PATH || exit
+cd "$WALLPAPER_PATH" || exit
 
-SELECTED_WALLPAPER=$(for theme in *.jpg *.png; do echo -en "$theme\0icon\x1f$theme\n" ; done | rofi -i -dmenu -p "" -theme ~/.config/rofi/wallpaperswitch.rasi)
+SELECTED_WALLPAPER=$(for theme in *.jpg *.jpeg *.png; do echo -en "$theme\0icon\x1f$theme\n" ; done | rofi -i -dmenu -p "" -theme ~/.config/rofi/wallpaperswitch.rasi)
     
 if [ -n "$SELECTED_WALLPAPER" ]; then
     awww img -t center --transition-duration 3 --transition-fps 60 "$WALLPAPER_PATH/$SELECTED_WALLPAPER"
-    echo "$SELECTED_WALLPAPER" > $HOME/.config/hypr/wallpapers/current.set
+    echo "$SELECTED_WALLPAPER" > "$WALLPAPER_PATH/current.set"
     ## set rofi background image
     cp "$WALLPAPER_PATH/$SELECTED_WALLPAPER" $HOME/.config/rofi/current_wallpaper.png
 
 fi
 
-cd $CWD || exit
+cd "$CWD" || exit
