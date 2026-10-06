@@ -68,8 +68,8 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 -- Visual "vidro fosco" (liquid glass leve): blur + borda com brilho + cantos suaves
 hl.config({
     general = {
-        gaps_in  = 5,
-        gaps_out = { top = 4, right = 10, bottom = 10, left = 10 }, -- topo menor: junto da waybar
+        gaps_in  = 3,
+        gaps_out = { top = 6, right = 10, bottom = 10, left = 10 }, -- topo menor: junto da waybar
 
         border_size = 1,
 
