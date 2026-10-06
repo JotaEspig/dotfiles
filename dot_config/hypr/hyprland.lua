@@ -69,7 +69,7 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.config({
     general = {
         gaps_in  = 5,
-        gaps_out = 10,
+        gaps_out = { top = 4, right = 10, bottom = 10, left = 10 }, -- topo menor: junto da waybar
 
         border_size = 1,
 
@@ -159,8 +159,8 @@ hl.animation({ leaf = "workspaces",    enabled = true, speed = 3,    bezier = "e
 -- "Smart gaps" / "No gaps when only" — descomente se quiser usar
 hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
 hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
-hl.window_rule({ name = "no-gaps-wtv1", match = { float = false, workspace = "w[tv1]" }, border_size = 0, rounding = 0 })
-hl.window_rule({ name = "no-gaps-f1",   match = { float = false, workspace = "f[1]" },   border_size = 0, rounding = 0 })
+hl.window_rule({ name = "no-gaps-wtv1", match = { float = false, workspace = "w[tv1]" }, border_size = 1, rounding = 0 })
+hl.window_rule({ name = "no-gaps-f1",   match = { float = false, workspace = "f[1]" },   border_size = 1, rounding = 0 })
 
 hl.config({
     dwindle = {
