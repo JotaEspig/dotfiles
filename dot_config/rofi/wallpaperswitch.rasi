@@ -25,6 +25,8 @@ mainbox {
 }
 
 inputbar {
+    background-color: #000000a0;
+    border-color:     #5FAFFF;
     border:           1px;
     margin:           15px;
     padding:          10px;
@@ -84,4 +86,6 @@ entry {
     background-color: transparent;
     text-color:       inherit;
     placeholder:      "Search Wallpapers...";
+    placeholder-color: #ffffffcc;
+    text-color:       #ffffff;
 }
