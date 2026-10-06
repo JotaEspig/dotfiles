@@ -29,7 +29,8 @@
     ],
 
     "custom/arch": {
-        "format": "\udb82\udcc7",
+        "exec": "~/.config/waybar/arch-state.sh",
+        "return-type": "json",
         "tooltip": false,
         "on-click": "rofi -show drun"
     },

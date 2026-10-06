@@ -33,6 +33,14 @@ window#waybar {
 	transition: color 0.2s ease;
 }
 
+#custom-arch.terminal {
+	color: #5FAFFF;
+}
+
+#custom-arch.root {
+	color: #ff5555;
+}
+
 #custom-arch:hover {
 	color: #ffffff;
 }
