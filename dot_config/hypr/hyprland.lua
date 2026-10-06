@@ -69,7 +69,7 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.config({
     general = {
         gaps_in  = 3,
-        gaps_out = { top = 6, right = 10, bottom = 10, left = 10 }, -- topo menor: junto da waybar
+        gaps_out = { top = 6, right = 6, bottom = 6, left = 6 }, -- topo menor: junto da waybar
 
         border_size = 1,
 
