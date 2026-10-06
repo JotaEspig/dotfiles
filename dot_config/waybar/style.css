@@ -28,13 +28,13 @@ window#waybar {
 #custom-arch {
 	font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", sans-serif;
 	font-size: 18px;
-	color: #1793d1;
+	color: rgba(255, 255, 255, 0.85);
 	padding: 0 12px 0 10px;
 	transition: color 0.2s ease;
 }
 
 #custom-arch:hover {
-	color: #5FAFFF;
+	color: #ffffff;
 }
 
 #workspaces {

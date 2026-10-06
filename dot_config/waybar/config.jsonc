@@ -29,7 +29,7 @@
     ],
 
     "custom/arch": {
-        "format": "\uf303",
+        "format": "\udb82\udcc7",
         "tooltip": false,
         "on-click": "rofi -show drun"
     },
