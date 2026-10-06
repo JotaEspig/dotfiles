@@ -11,12 +11,13 @@ window {
     height:           500px; 
     border-radius:    15px;
     border:           2px;
-    border-color:     @border;
+    border-color:     #ffffff30;
     padding:          0px;
+    background-color: @bg0;
 }
 
 mainbox {
-    background-color: @background;
+    background-color: transparent;
     border:           0px;
     spacing:          0px;
     padding:          0px;
@@ -41,7 +42,7 @@ listview {
     spacing:          0px;
     padding:          0px;
     margin:           0px;
-    background-color: @background;
+    background-color: transparent;
     fixed-height:     true;
 }
 
@@ -49,15 +50,15 @@ element {
     orientation:      vertical;
     padding:          10px 0px;
     spacing:          10px 0px;
-    background-color: @background-alt;
-    text-color:       @foreground;
+    background-color: @bg2;
+    text-color:       @fg0;
     margin:           10px;
     border-radius:    10px;
 }
 
 element selected {
-    background-color: @selected-background;
-    text-color:       @selected-foreground;
+    background-color: @bg3;
+    text-color:       @fg1;
     border-radius:    10px;
 }
 
