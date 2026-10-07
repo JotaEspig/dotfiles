@@ -26,7 +26,7 @@ mainbox {
 }
 
 inputbar {
-    background-color:   @bg1;
+    background-color:   #000000a0;
     border-color:       @bg3;
 
     border:         2px;
@@ -38,12 +38,13 @@ inputbar {
 }
 
 prompt {
-    text-color: @fg2;
+    text-color: #ffffffcc;
 }
 
 entry {
     placeholder:        "Search";
-    placeholder-color:  @fg3;
+    placeholder-color:  #ffffffb3;
+    text-color:         #ffffff;
 }
 
 message {
