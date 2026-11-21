@@ -187,8 +187,8 @@ hl.config({
 
 hl.config({
     input = {
-        kb_layout  = "us",
-        kb_variant = "intl",
+        kb_layout  = "us,br",
+        kb_variant = "intl,",  -- br sem variante = ABNT2
         kb_model   = "",
         kb_options = "",
         kb_rules   = "",
@@ -226,8 +226,9 @@ hl.bind(mainMod .. " + Tab",         hl.dsp.window.cycle_next({ next = true }))
 hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.window.cycle_next({ next = false }))
 hl.bind(mainMod .. " + P",      hl.dsp.window.pin({ action = "toggle" }))
 hl.bind(mainMod .. " + Print",       hl.dsp.exec_cmd("hyprshot -m output -m eDP-1 -o ~/Pictures/screenshots"))
-hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --raw | satty --filename -"))
+hl.bind(mainMod .. " + SHIFT + Print", hl.dsp.exec_cmd("hyprshot -m region --raw | GDK_BACKEND=x11 satty --filename -"))
 hl.bind(mainMod .. " + L",      hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + K",      hl.dsp.exec_cmd("~/.config/hypr/kb-switch.sh")) -- alterna US intl <-> ABNT2
 -- Wallpaper picker
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("~/.config/hypr/wallpaper-switch.sh pick"))
 
