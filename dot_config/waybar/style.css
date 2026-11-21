@@ -114,6 +114,7 @@ window#waybar {
 #battery,
 #custom-bluetooth,
 #power-profiles-daemon,
+#custom-battery-health,
 #custom-power,
 #custom-debug-toggle,
 #tray {
@@ -130,7 +131,8 @@ window#waybar {
 #backlight:hover,
 #battery:hover,
 #custom-bluetooth:hover,
-#power-profiles-daemon:hover {
+#power-profiles-daemon:hover,
+#custom-battery-health:hover {
 	background: rgba(255, 255, 255, 0.15);
 }
 
@@ -170,6 +172,15 @@ window#waybar {
 /* ── Audio ── */
 #pulseaudio.muted {
 	color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Battery health mode (limite de carga ~80%) ── */
+#custom-battery-health.limited {
+	color: #8de5a1;
+}
+
+#custom-battery-health.full {
+	color: #f0c060;
 }
 
 /* ── Battery ── */

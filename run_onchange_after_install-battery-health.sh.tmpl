@@ -1,0 +1,22 @@
+#!/bin/bash
+# Instala o toggle do health mode da bateria (arquivos de sistema, exige sudo).
+# Reexecuta quando o conteúdo de algum dos arquivos muda:
+# toggle:  {{ include "system/usr/local/bin/battery-health-toggle" | sha256sum }}
+# sudoers: {{ includeTemplate "system/etc/sudoers.d/battery-health.tmpl" . | sha256sum }}
+set -euo pipefail
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+cat > "$tmp" <<'SUDOERS'
+{{ includeTemplate "system/etc/sudoers.d/battery-health.tmpl" . -}}
+SUDOERS
+
+# Valida a sintaxe antes de instalar: um sudoers quebrado pode travar o sudo inteiro.
+visudo -cqf "$tmp"
+
+sudo install -o root -g root -m 0755 \
+    "{{ .chezmoi.sourceDir }}/system/usr/local/bin/battery-health-toggle" \
+    /usr/local/bin/battery-health-toggle
+sudo install -o root -g root -m 0440 "$tmp" /etc/sudoers.d/battery-health
+
+echo "battery-health-toggle instalado."

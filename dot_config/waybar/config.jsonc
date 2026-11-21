@@ -24,6 +24,7 @@
         "pulseaudio",
         "backlight",
         "power-profiles-daemon",
+        "custom/battery-health",
         "battery",
         "custom/power"
     ],
@@ -95,6 +96,14 @@
         "format-full": "󰁹  Full",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{timeTo}  {power}W"
+    },
+
+    "custom/battery-health": {
+        "exec": "~/.config/waybar/battery-health.sh",
+        "return-type": "json",
+        "interval": 60,
+        "signal": 8,
+        "on-click": "sudo -n /usr/local/bin/battery-health-toggle >/dev/null && pkill -RTMIN+8 waybar"
     },
 
     "power-profiles-daemon": {

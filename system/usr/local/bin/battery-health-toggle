@@ -1,0 +1,20 @@
+#!/bin/bash
+# Alterna o health mode (limite de carga em ~80%) do driver acer-wmi-battery.
+# Roda como root via sudo (regra em /etc/sudoers.d/battery-health); não aceita argumentos.
+# Imprime o novo valor: 1 = limite ativo, 0 = carga completa liberada.
+set -euo pipefail
+PATH=/usr/bin
+
+f=/sys/bus/wmi/drivers/acer-wmi-battery/health_mode
+
+[ $# -eq 0 ] || { echo "uso: ${0##*/} (sem argumentos)" >&2; exit 2; }
+[ "$(id -u)" -eq 0 ] || { echo "precisa rodar como root (sudo ${0##*/})" >&2; exit 1; }
+[ -w "$f" ] || { echo "módulo acer_wmi_battery não carregado" >&2; exit 1; }
+
+case "$(<"$f")" in
+    1) new=0 ;;
+    0) new=1 ;;
+    *) echo "valor inesperado em $f" >&2; exit 1 ;;
+esac
+echo "$new" > "$f"
+echo "$new"
